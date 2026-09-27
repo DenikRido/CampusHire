@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "CampusHire — Campus placement, run properly",
+      "hasCanvas": false,
+      "bodyTextLen": 707,
+      "bodyTextHash": "03a481ed8f1c1d32d6dd1ff7ed1efefad727d30c0401c8b5bc3889ae7fa6f8a3",
+      "bodyTextPrefix": "CampusHire About API Sign in Create account PLACEMENT CELL SOFTW",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "CampusHire — Campus placement, run properly",
+      "hasCanvas": false,
+      "bodyTextLen": 707,
+      "bodyTextHash": "03a481ed8f1c1d32d6dd1ff7ed1efefad727d30c0401c8b5bc3889ae7fa6f8a3",
+      "bodyTextPrefix": "CampusHire About API Sign in Create account PLACEMENT CELL SOFTW",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

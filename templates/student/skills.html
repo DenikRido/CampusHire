@@ -1,0 +1,24 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Skills{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Skills</h1><p>Jobs can require these by name.</p></div></div>
+<form id="skill-form" class="panel mb-4 d-flex gap-2 flex-wrap" style="max-width:640px">
+  {% csrf_token %}
+  <input class="form-control" name="skill_name" placeholder="Skill name" required style="max-width:240px">
+  <select class="form-select" name="proficiency" style="max-width:180px">
+    <option>BEGINNER</option><option selected>INTERMEDIATE</option><option>ADVANCED</option><option>EXPERT</option>
+  </select>
+  <button class="btn btn-primary" type="submit">Add</button>
+</form>
+<div class="d-flex flex-wrap gap-2">
+  {% for item in skills %}
+    <span class="badge-status">{{ item.skill.name }} · {{ item.proficiency }}
+      <button class="btn btn-ghost btn-sm p-0 ms-1" data-skill-delete="{{ item.id }}" type="button">×</button>
+    </span>
+  {% empty %}
+    <p class="muted">No skills yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/profile.js' %}"></script>{% endblock %}

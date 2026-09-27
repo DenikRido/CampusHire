@@ -1,0 +1,23 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Student dashboard{% endblock %}
+{% block content %}
+<div data-dashboard="student">
+  <div class="page-head">
+    <div>
+      <h1>Hello, {{ user.first_name }}</h1>
+      <p>Your placement snapshot, loaded from the API.</p>
+    </div>
+    <a class="btn btn-primary" href="{% url 'student-jobs' %}">Browse jobs</a>
+  </div>
+  <div class="grid-3">
+    <article class="panel stat-card"><p>Active applications</p><h3 class="mono" data-stat="active_applications">—</h3></article>
+    <article class="panel stat-card"><p>Shortlisted</p><h3 class="mono" data-stat="shortlisted">—</h3></article>
+    <article class="panel stat-card"><p>Upcoming interviews</p><h3 class="mono" data-stat="upcoming_interviews">—</h3></article>
+    <article class="panel stat-card"><p>Unread notifications</p><h3 class="mono" data-stat="unread_notifications">—</h3></article>
+    <article class="panel stat-card"><p>Open jobs</p><h3 class="mono" data-stat="available_jobs">—</h3></article>
+    <article class="panel stat-card"><p>Selected</p><h3 class="mono" data-stat="selected">—</h3></article>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/dashboard.js' %}"></script>{% endblock %}

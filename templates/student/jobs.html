@@ -1,0 +1,25 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Jobs{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Open roles</h1><p>Search and filters call the REST API.</p></div></div>
+<div class="filter-bar">
+  <input class="form-control" id="job-search" placeholder="Search title, company, skill">
+  <input class="form-control" id="job-location" placeholder="Location">
+  <select class="form-select" id="job-department">
+    <option value="">Department</option>
+    <option>CSE</option><option>IT</option><option>ECE</option><option>MECH</option><option>MBA</option>
+  </select>
+  <select class="form-select" id="job-employment">
+    <option value="">Type</option>
+    <option value="FULL_TIME">Full-time</option>
+    <option value="INTERNSHIP">Internship</option>
+    <option value="CONTRACT">Contract</option>
+  </select>
+  <span id="job-loading" class="d-none spinner"></span>
+</div>
+<div id="job-empty" class="empty d-none">No matching jobs.</div>
+<div id="job-grid" class="row g-3"></div>
+<div id="job-pager" class="d-flex gap-2 mt-3"></div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/jobs.js' %}"></script>{% endblock %}

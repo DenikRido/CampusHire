@@ -1,0 +1,20 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Admin overview{% endblock %}
+{% block content %}
+<div data-dashboard="admin">
+  <div class="page-head"><div><h1>Placement overview</h1><p>Live aggregates from MySQL via the dashboard API.</p></div></div>
+  <div class="grid-3">
+    <article class="panel stat-card"><p>Students</p><h3 class="mono" data-stat="total_students">—</h3></article>
+    <article class="panel stat-card"><p>Recruiters</p><h3 class="mono" data-stat="total_recruiters">—</h3></article>
+    <article class="panel stat-card"><p>Companies</p><h3 class="mono" data-stat="total_companies">—</h3></article>
+    <article class="panel stat-card"><p>Active jobs</p><h3 class="mono" data-stat="active_jobs">—</h3></article>
+    <article class="panel stat-card"><p>Applications</p><h3 class="mono" data-stat="total_applications">—</h3></article>
+    <article class="panel stat-card"><p>Selected</p><h3 class="mono" data-stat="selected_candidates">—</h3></article>
+    <article class="panel stat-card"><p>Placement rate %</p><h3 class="mono" data-stat="placement_rate">—</h3></article>
+    <article class="panel stat-card"><p>Pending job approvals</p><h3 class="mono" data-stat="pending_job_approvals">—</h3></article>
+    <article class="panel stat-card"><p>Interviews</p><h3 class="mono" data-stat="interview_count">—</h3></article>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/dashboard.js' %}"></script>{% endblock %}

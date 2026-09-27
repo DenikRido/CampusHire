@@ -1,0 +1,26 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Recruiter dashboard{% endblock %}
+{% block content %}
+<div data-dashboard="recruiter">
+  <div class="page-head">
+    <div>
+      <h1>{{ company.company_name|default:"Your company" }}</h1>
+      <p>
+        {% if company %}Status: {{ company.get_verification_status_display }}
+        {% else %}Create a company profile to post jobs.{% endif %}
+      </p>
+    </div>
+    <a class="btn btn-primary" href="{% url 'recruiter-job-create' %}">New job</a>
+  </div>
+  <div class="grid-3">
+    <article class="panel stat-card"><p>Active jobs</p><h3 class="mono" data-stat="active_jobs">—</h3></article>
+    <article class="panel stat-card"><p>Applications</p><h3 class="mono" data-stat="total_applications">—</h3></article>
+    <article class="panel stat-card"><p>Shortlisted</p><h3 class="mono" data-stat="shortlisted_candidates">—</h3></article>
+    <article class="panel stat-card"><p>Interviews</p><h3 class="mono" data-stat="scheduled_interviews">—</h3></article>
+    <article class="panel stat-card"><p>Selected</p><h3 class="mono" data-stat="selected_candidates">—</h3></article>
+    <article class="panel stat-card"><p>Pending approval</p><h3 class="mono" data-stat="pending_approval_jobs">—</h3></article>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/dashboard.js' %}"></script>{% endblock %}

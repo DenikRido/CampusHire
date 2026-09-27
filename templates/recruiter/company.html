@@ -1,0 +1,24 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Company{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Company profile</h1>
+  {% if company %}<p>Verification: {{ company.get_verification_status_display }}</p>{% endif %}
+</div></div>
+<div id="company-alert"></div>
+<form id="company-form" class="panel" style="max-width:640px" data-id="{{ company.id|default:'' }}">
+  {% csrf_token %}
+  <label class="form-label">Company name</label>
+  <input class="form-control mb-2" name="company_name" value="{{ company.company_name|default:'' }}" required>
+  <label class="form-label">Industry</label>
+  <input class="form-control mb-2" name="industry" value="{{ company.industry|default:'' }}">
+  <label class="form-label">Location</label>
+  <input class="form-control mb-2" name="location" value="{{ company.location|default:'' }}">
+  <label class="form-label">Website</label>
+  <input class="form-control mb-2" name="website" value="{{ company.website|default:'' }}">
+  <label class="form-label">Description</label>
+  <textarea class="form-control mb-3" name="description" rows="5">{{ company.description|default:'' }}</textarea>
+  <button class="btn btn-primary" type="submit">Save</button>
+</form>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/profile.js' %}"></script>{% endblock %}

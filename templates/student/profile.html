@@ -1,0 +1,38 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Profile</h1><p>Registration number cannot be changed.</p></div></div>
+<div id="profile-alert"></div>
+<form id="profile-form" class="panel" style="max-width:720px">
+  {% csrf_token %}
+  <div class="row g-3">
+    <div class="col-md-6"><label class="form-label">First name</label><input class="form-control" name="first_name" value="{{ profile.user.first_name }}"></div>
+    <div class="col-md-6"><label class="form-label">Last name</label><input class="form-control" name="last_name" value="{{ profile.user.last_name }}"></div>
+    <div class="col-md-6"><label class="form-label">Phone</label><input class="form-control" name="phone" value="{{ profile.phone }}"></div>
+    <div class="col-md-6"><label class="form-label">Gender</label>
+      <select class="form-select" name="gender">
+        <option value="{{ profile.gender }}" selected>{{ profile.get_gender_display }}</option>
+        <option value="FEMALE">Female</option><option value="MALE">Male</option>
+        <option value="OTHER">Other</option><option value="PREFER_NOT_TO_SAY">Prefer not to say</option>
+      </select>
+    </div>
+    <div class="col-md-4"><label class="form-label">Department</label>
+      <input class="form-control" name="department" value="{{ profile.department }}">
+    </div>
+    <div class="col-md-4"><label class="form-label">Degree</label>
+      <input class="form-control" name="degree" value="{{ profile.degree }}">
+    </div>
+    <div class="col-md-4"><label class="form-label">Graduation year</label>
+      <input class="form-control" type="number" name="graduation_year" value="{{ profile.graduation_year }}">
+    </div>
+    <div class="col-md-6"><label class="form-label">CGPA</label><input class="form-control" name="cgpa" value="{{ profile.cgpa }}"></div>
+    <div class="col-md-6"><label class="form-label">Backlogs</label><input class="form-control" type="number" name="backlogs" value="{{ profile.backlogs }}"></div>
+    <div class="col-md-4"><label class="form-label">GitHub</label><input class="form-control" name="github_url" value="{{ profile.github_url }}"></div>
+    <div class="col-md-4"><label class="form-label">LinkedIn</label><input class="form-control" name="linkedin_url" value="{{ profile.linkedin_url }}"></div>
+    <div class="col-md-4"><label class="form-label">Portfolio</label><input class="form-control" name="portfolio_url" value="{{ profile.portfolio_url }}"></div>
+  </div>
+  <button class="btn btn-primary mt-4" type="submit">Save profile</button>
+</form>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/profile.js' %}"></script>{% endblock %}

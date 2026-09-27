@@ -1,0 +1,30 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}{{ job.title }}{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <p class="muted mb-1">{{ job.company.company_name }} · {{ job.location }}</p>
+    <h1>{{ job.title }}</h1>
+  </div>
+  <a class="btn btn-primary" href="{% url 'student-apply' job.pk %}">Apply</a>
+</div>
+<div class="row g-4">
+  <div class="col-lg-8">
+    <article class="panel">
+      <p>{{ job.description|linebreaks }}</p>
+    </article>
+  </div>
+  <div class="col-lg-4">
+    <aside class="panel">
+      <p><strong>Type</strong><br>{{ job.get_employment_type_display }}</p>
+      <p><strong>Salary</strong><br>{{ job.salary_range }}</p>
+      <p><strong>Min CGPA</strong><br>{{ job.minimum_cgpa }}</p>
+      <p><strong>Max backlogs</strong><br>{{ job.maximum_backlogs }}</p>
+      <p><strong>Deadline</strong><br>{{ job.application_deadline }}</p>
+      <div id="eligibility-box" data-job-id="{{ job.id }}"><span class="spinner"></span></div>
+    </aside>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/eligibility.js' %}"></script>{% endblock %}

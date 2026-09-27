@@ -1,0 +1,19 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Applicants{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Applicants — {{ job.title }}</h1></div>
+  <select id="app-status" class="form-select" style="max-width:220px">
+    <option value="">All</option>
+    <option>APPLIED</option><option>UNDER_REVIEW</option><option>SHORTLISTED</option>
+    <option>INTERVIEW_SCHEDULED</option><option>SELECTED</option><option>REJECTED</option>
+  </select>
+</div>
+<div class="panel p-0">
+  <table class="table mb-0" id="application-table" data-role="recruiter" data-job="{{ job.id }}">
+    <thead><tr><th>Candidate</th><th>Reg. no</th><th>Status</th><th>Applied</th><th></th></tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/applications.js' %}"></script>{% endblock %}

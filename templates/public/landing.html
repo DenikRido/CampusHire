@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}CampusHire — Campus placement, run properly{% endblock %}
+{% block body %}
+{% include "includes/public_nav.html" %}
+<section class="hero">
+  <p class="muted text-uppercase" style="letter-spacing:.14em;font-size:.78rem;font-weight:700;">Placement cell software</p>
+  <h1>Hire from campus with rules, not spreadsheets.</h1>
+  <p class="lead">CampusHire is a full recruitment workflow for students, recruiters, and placement officers — eligibility, applications, interviews, and audit history included.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="{% url 'register' %}">Join as student or recruiter</a>
+    <a class="btn btn-outline-primary" href="{% url 'login' %}">Sign in to demo</a>
+  </div>
+</section>
+<section class="container pb-5">
+  <div class="grid-3">
+    <article class="panel stat-card">
+      <p class="muted mb-1">Students</p>
+      <h3>Apply with proof</h3>
+      <p>CGPA, backlogs, department, skills, and resume are checked before an application is stored.</p>
+    </article>
+    <article class="panel stat-card">
+      <p class="muted mb-1">Recruiters</p>
+      <h3>Own the pipeline</h3>
+      <p>Post jobs, shortlist, schedule interviews, and never see another recruiter’s candidates.</p>
+    </article>
+    <article class="panel stat-card">
+      <p class="muted mb-1">Admins</p>
+      <h3>Approve the market</h3>
+      <p>Verify companies, release job postings, and read live placement statistics.</p>
+    </article>
+  </div>
+</section>
+<footer class="site-footer">CampusHire · Django · DRF · MySQL · Redis · Celery</footer>
+{% endblock %}

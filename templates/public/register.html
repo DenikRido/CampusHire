@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Register · CampusHire{% endblock %}
+{% block body %}
+<div class="auth-wrap">
+  <div class="auth-card">
+    <a class="brand d-inline-block mb-3" href="{% url 'landing' %}">Campus<span>Hire</span></a>
+    <h1 class="h3">Create an account</h1>
+    <div id="auth-alert"></div>
+    <form id="register-form" class="mt-3">
+      {% csrf_token %}
+      <label class="form-label">I am a</label>
+      <select class="form-select mb-3" name="role">
+        <option value="STUDENT">Student</option>
+        <option value="RECRUITER">Recruiter</option>
+      </select>
+      <div class="row g-2">
+        <div class="col"><input class="form-control" name="first_name" placeholder="First name" required></div>
+        <div class="col"><input class="form-control" name="last_name" placeholder="Last name"></div>
+      </div>
+      <input class="form-control mt-2" type="email" name="email" placeholder="Email" required>
+      <input class="form-control mt-2 mb-2" type="password" name="password" placeholder="Password (10+ chars)" required>
+      <div id="student-fields">
+        <input class="form-control mt-2" name="registration_number" placeholder="Registration number">
+        <div class="row g-2 mt-1">
+          <div class="col">
+            <select class="form-select" name="department">
+              <option value="CSE">CSE</option><option value="IT">IT</option><option value="ECE">ECE</option>
+              <option value="EEE">EEE</option><option value="MECH">MECH</option><option value="CIVIL">CIVIL</option>
+              <option value="MBA">MBA</option><option value="MCA">MCA</option>
+            </select>
+          </div>
+          <div class="col">
+            <select class="form-select" name="degree">
+              <option value="BTECH">B.Tech</option><option value="BE">B.E.</option>
+              <option value="MTECH">M.Tech</option><option value="MBA">MBA</option><option value="MCA">MCA</option>
+            </select>
+          </div>
+        </div>
+        <div class="row g-2 mt-1">
+          <div class="col"><input class="form-control" name="graduation_year" placeholder="Grad year" type="number" value="2026"></div>
+          <div class="col"><input class="form-control" name="cgpa" placeholder="CGPA" value="8.0"></div>
+        </div>
+      </div>
+      <div id="recruiter-fields" class="d-none">
+        <input class="form-control mt-2" name="designation" placeholder="Designation">
+      </div>
+      <button class="btn btn-primary w-100 mt-3" type="submit">Create account</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/auth.js' %}"></script>
+{% endblock %}

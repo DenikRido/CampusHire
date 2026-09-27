@@ -1,0 +1,24 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Application{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{{ application.job.title }}</h1>
+    <p>{{ application.job.company.company_name }} · {{ application.get_status_display }}</p>
+  </div>
+  {% if application.status == "APPLIED" or application.status == "UNDER_REVIEW" %}
+    <button class="btn btn-outline-primary" id="withdraw-btn" data-id="{{ application.id }}">Withdraw</button>
+  {% endif %}
+</div>
+<div class="panel mb-3">
+  <p>{{ application.cover_letter|default:"No cover letter." }}</p>
+</div>
+<h2 class="h5">History</h2>
+<ul>
+  {% for item in application.history.all %}
+    <li>{{ item.old_status|default:"—" }} → {{ item.new_status }} · {{ item.changed_at }} · {{ item.remarks }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/applications.js' %}"></script>{% endblock %}

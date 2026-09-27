@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}About · CampusHire{% endblock %}
+{% block body %}
+{% include "includes/public_nav.html" %}
+<section class="hero">
+  <h1>Built as a real backend, not a CRUD demo.</h1>
+  <p class="lead">Eligibility is a service. Status changes write history. Notifications land even if the worker is down. The REST API is what the dashboards actually call.</p>
+</section>
+<section class="container pb-5" style="max-width:720px">
+  <h2 class="h4">How a job moves</h2>
+  <p>Draft → pending approval → approved/active → closed. Students only see active jobs whose deadline has not passed.</p>
+  <h2 class="h4 mt-4">How an application moves</h2>
+  <p>Applied → under review → shortlisted → interview scheduled → selected, or rejected at valid points. Illegal transitions are rejected by the backend.</p>
+  <p class="mt-4"><a href="/api/docs/">Open the Swagger documentation</a></p>
+</section>
+<footer class="site-footer">CampusHire</footer>
+{% endblock %}

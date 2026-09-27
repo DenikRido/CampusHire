@@ -1,0 +1,21 @@
+{% extends "base_app.html" %}
+{% block title %}Users{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Users</h1></div></div>
+<div class="panel p-0">
+  <table class="table mb-0">
+    <thead><tr><th>Email</th><th>Name</th><th>Role</th><th>Active</th><th>Joined</th></tr></thead>
+    <tbody>
+      {% for u in users %}
+        <tr>
+          <td>{{ u.email }}</td>
+          <td>{{ u.full_name }}</td>
+          <td><span class="badge-status">{{ u.role }}</span></td>
+          <td>{{ u.is_active|yesno:"Yes,No" }}</td>
+          <td>{{ u.date_joined|date:"d M Y" }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

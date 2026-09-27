@@ -1,0 +1,99 @@
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+eggs/
+*.egg-info/
+.eggs/
+pip-log.txt
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/staticfiles/
+/media/*
+!/media/.gitkeep
+!/media/resumes/.gitkeep
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Node (platform leftover; not used by Django)
+node_modules/
+npm-debug.log*
+
+# Docker
+docker-data/
+
+# Celery
+celerybeat-schedule
+celerybeat-schedule.db
+celerybeat.pid
+
+# Testing / tooling
+.cache/
+coverage.xml
+
+# Uploaded/user-generated files
+media/*
+!/media/.gitkeep
+!/media/resumes/.gitkeep
+
+# Environment / local development
+*.sqlite3
+
+# Node (platform leftover; not used by Django)
+node_modules/
+
+# Development / AI tooling
+.grok/
+artifacts/
+
+# Unrelated frontend tooling
+node_modules/
+
+# Development/tooling metadata
+.node_modules.lock
+.project_id
+.prettierrc
+AGENTS.md
+
+# Grok/app-builder frontend
+public/__grok/
+src/
+server/
+scripts/
+package.json
+package-lock.json
+eslint.config.mjs
+tsconfig.json
+vercel.json
+vite.config.ts

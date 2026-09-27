@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Sign in · CampusHire{% endblock %}
+{% block body %}
+<div class="auth-wrap">
+  <div class="auth-card">
+    <a class="brand d-inline-block mb-3" href="{% url 'landing' %}">Campus<span>Hire</span></a>
+    <h1 class="h3 mb-1">Sign in</h1>
+    <p class="muted">Use a demo account from the README, or your own.</p>
+    <div id="auth-alert"></div>
+    <form id="login-form" class="mt-3">
+      {% csrf_token %}
+      <label class="form-label">Email</label>
+      <input class="form-control mb-3" type="email" name="email" required value="priya.sharma@campushire.local">
+      <label class="form-label">Password</label>
+      <input class="form-control mb-3" type="password" name="password" required value="CampusHire@123">
+      <button class="btn btn-primary w-100" type="submit">Continue</button>
+    </form>
+    <p class="mt-3 mb-0 muted">No account? <a href="{% url 'register' %}">Create one</a></p>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/auth.js' %}"></script>
+{% endblock %}

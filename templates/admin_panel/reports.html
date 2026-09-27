@@ -1,0 +1,14 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<div data-dashboard="admin">
+  <div class="page-head"><div><h1>Reports</h1><p>Aggregations from the dashboard API.</p></div></div>
+  <div class="row g-3">
+    <div class="col-md-4"><article class="panel"><h2 class="h6">Applications by status</h2><div id="status-breakdown"></div></article></div>
+    <div class="col-md-4"><article class="panel"><h2 class="h6">Jobs by department</h2><div id="dept-breakdown"></div></article></div>
+    <div class="col-md-4"><article class="panel"><h2 class="h6">Applications by company</h2><div id="company-breakdown"></div></article></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/dashboard.js' %}"></script>{% endblock %}

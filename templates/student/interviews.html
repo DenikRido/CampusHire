@@ -1,0 +1,14 @@
+{% extends "base_app.html" %}
+{% block title %}Interviews{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Interview schedule</h1></div></div>
+{% for item in interviews %}
+  <article class="panel mb-2">
+    <h3 class="h5 mb-1">{{ item.application.job.title }}</h3>
+    <p class="mb-1">{{ item.scheduled_at }} · {{ item.get_mode_display }} · {{ item.interviewer_name }}</p>
+    {% if item.meeting_link %}<p class="mb-0"><a href="{{ item.meeting_link }}">Join meeting</a></p>{% endif %}
+  </article>
+{% empty %}
+  <div class="empty">No interviews scheduled.</div>
+{% endfor %}
+{% endblock %}

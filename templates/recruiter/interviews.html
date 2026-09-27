@@ -1,0 +1,16 @@
+{% extends "base_app.html" %}
+{% block title %}Interviews{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Interviews</h1></div></div>
+{% for item in interviews %}
+  <article class="panel mb-2 d-flex justify-content-between">
+    <div>
+      <h3 class="h6 mb-1">{{ item.application.student.user.full_name }} — {{ item.application.job.title }}</h3>
+      <p class="mb-0 muted">{{ item.scheduled_at }} · {{ item.get_mode_display }} · {{ item.interviewer_name }}</p>
+    </div>
+    <span class="badge-status {{ item.result|lower }}">{{ item.get_result_display }}</span>
+  </article>
+{% empty %}
+  <div class="empty">No interviews yet.</div>
+{% endfor %}
+{% endblock %}

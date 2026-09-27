@@ -1,0 +1,25 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Companies{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Company verification</h1></div></div>
+<div class="panel p-0">
+  <table class="table mb-0">
+    <thead><tr><th>Company</th><th>Owner</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      {% for c in companies %}
+        <tr>
+          <td>{{ c.company_name }}</td>
+          <td>{{ c.owner.email }}</td>
+          <td><span class="badge-status {{ c.verification_status|lower }}">{{ c.get_verification_status_display }}</span></td>
+          <td>
+            <button class="btn btn-sm btn-primary" data-verify="{{ c.id }}" data-status="VERIFIED">Verify</button>
+            <button class="btn btn-sm btn-outline-primary" data-verify="{{ c.id }}" data-status="REJECTED">Reject</button>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/admin.js' %}"></script>{% endblock %}

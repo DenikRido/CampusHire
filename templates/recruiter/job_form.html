@@ -1,0 +1,61 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}{% if job %}Edit job{% else %}Create job{% endif %}{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>{% if job %}Edit job{% else %}Create job{% endif %}</h1></div></div>
+<div id="job-alert"></div>
+<form id="job-form" class="panel" data-id="{{ job.id|default:'' }}">
+  {% csrf_token %}
+  <label class="form-label">Title</label>
+  <input class="form-control mb-2" name="title" value="{{ job.title|default:'' }}" required>
+  <label class="form-label">Description</label>
+  <textarea class="form-control mb-2" name="description" rows="6" required>{{ job.description|default:'' }}</textarea>
+  <div class="row g-2">
+    <div class="col-md-4">
+      <label class="form-label">Employment type</label>
+      <select class="form-select" name="employment_type">
+        <option value="FULL_TIME">Full-time</option>
+        <option value="INTERNSHIP">Internship</option>
+        <option value="CONTRACT">Contract</option>
+        <option value="PART_TIME">Part-time</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Location</label>
+      <input class="form-control" name="location" value="{{ job.location|default:'' }}" required>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Deadline</label>
+      <input class="form-control" type="datetime-local" name="application_deadline" required>
+    </div>
+    <div class="col-md-3"><label class="form-label">Min CGPA</label><input class="form-control" name="minimum_cgpa" value="{{ job.minimum_cgpa|default:'7.0' }}"></div>
+    <div class="col-md-3"><label class="form-label">Max backlogs</label><input class="form-control" name="maximum_backlogs" value="{{ job.maximum_backlogs|default:'0' }}"></div>
+    <div class="col-md-3"><label class="form-label">Salary min</label><input class="form-control" name="salary_min" value="{{ job.salary_min|default:'' }}"></div>
+    <div class="col-md-3"><label class="form-label">Salary max</label><input class="form-control" name="salary_max" value="{{ job.salary_max|default:'' }}"></div>
+    <div class="col-md-4"><label class="form-label">Graduation year</label><input class="form-control" name="graduation_year" value="{{ job.graduation_year|default:'' }}"></div>
+    <div class="col-md-4">
+      <label class="form-label">Departments</label>
+      <select class="form-select" name="eligible_departments" multiple>
+        <option>CSE</option><option>IT</option><option>ECE</option><option>EEE</option>
+        <option>MECH</option><option>CIVIL</option><option>MBA</option><option>MCA</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Degrees</label>
+      <select class="form-select" name="eligible_degrees" multiple>
+        <option>BTECH</option><option>BE</option><option>MTECH</option><option>MBA</option><option>MCA</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label class="form-label">Required skills</label>
+      <select class="form-select" name="required_skill_ids" multiple>
+        {% for skill in skills %}
+          <option value="{{ skill.id }}">{{ skill.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <button class="btn btn-primary mt-3" type="submit">{% if job %}Save{% else %}Create and submit for approval{% endif %}</button>
+</form>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/profile.js' %}"></script>{% endblock %}

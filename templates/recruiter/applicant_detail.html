@@ -1,0 +1,60 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Candidate{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>{{ application.student.user.full_name }}</h1>
+    <p>{{ application.student.registration_number }} · CGPA {{ application.student.cgpa }} · {{ application.student.department }}</p>
+  </div>
+</div>
+<div class="row g-3">
+  <div class="col-lg-7">
+    <article class="panel">
+      <p>{{ application.cover_letter|default:"No cover letter." }}</p>
+      {% if application.student.resume %}<p><a href="{{ application.student.resume.url }}">Download resume</a></p>{% endif %}
+      <h2 class="h6 mt-3">Skills</h2>
+      {% for s in application.student.student_skills.all %}
+        <span class="badge-status">{{ s.skill.name }}</span>
+      {% endfor %}
+    </article>
+    <h2 class="h6 mt-4">History</h2>
+    <ul>
+      {% for item in application.history.all %}
+        <li>{{ item.old_status|default:"—" }} → {{ item.new_status }} — {{ item.remarks }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-lg-5">
+    <div id="status-alert"></div>
+    <form id="status-form" class="panel mb-3" data-id="{{ application.id }}">
+      <label class="form-label">Update status</label>
+      <select class="form-select mb-2" name="status">
+        <option>UNDER_REVIEW</option>
+        <option>SHORTLISTED</option>
+        <option>REJECTED</option>
+        <option>SELECTED</option>
+      </select>
+      <input class="form-control mb-2" name="remarks" placeholder="Remarks">
+      <button class="btn btn-primary w-100" type="submit">Save status</button>
+    </form>
+    <form id="interview-form" class="panel">
+      <h2 class="h6">Schedule interview</h2>
+      <div id="interview-alert"></div>
+      <input type="hidden" name="application_id" value="{{ application.id }}">
+      <input class="form-control mb-2" type="datetime-local" name="scheduled_at" required>
+      <select class="form-select mb-2" name="mode">
+        <option>ONLINE</option><option>OFFLINE</option><option>HYBRID</option>
+      </select>
+      <input class="form-control mb-2" name="meeting_link" placeholder="Meeting link">
+      <input class="form-control mb-2" name="interviewer_name" placeholder="Interviewer" required>
+      <textarea class="form-control mb-2" name="notes" placeholder="Notes"></textarea>
+      <button class="btn btn-outline-primary w-100" type="submit">Schedule</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'js/applications.js' %}"></script>
+<script src="{% static 'js/interviews.js' %}"></script>
+{% endblock %}

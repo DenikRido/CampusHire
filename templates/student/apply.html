@@ -1,0 +1,17 @@
+{% extends "base_app.html" %}
+{% load static %}
+{% block title %}Apply · {{ job.title }}{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Apply — {{ job.title }}</h1><p>{{ job.company.company_name }}</p></div></div>
+<div id="eligibility-box" data-job-id="{{ job.id }}" class="mb-3"></div>
+<div id="apply-alert"></div>
+<div id="apply-actions" class="d-none">
+  <form id="apply-form" class="panel" style="max-width:640px">
+    {% csrf_token %}
+    <label class="form-label">Cover letter</label>
+    <textarea class="form-control" name="cover_letter" rows="6" placeholder="Why this role?"></textarea>
+    <button class="btn btn-primary mt-3" type="submit">Submit application</button>
+  </form>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{% static 'js/eligibility.js' %}"></script>{% endblock %}
